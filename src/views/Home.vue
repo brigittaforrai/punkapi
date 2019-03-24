@@ -3,12 +3,15 @@
     <h1>PUNK API</h1>
     <h5>by brigittaforrai</h5>
 
-    <beerOverview :beer="randomBeer" :addToFav="true" :details="false">
-      <section>
-        <h2>Random beer</h2>
-        <v-btn @click="getNew" depressed color="orange">Get new!</v-btn>
-      </section>
-    </beerOverview>
+      <beerOverview :beer="randomBeer" :addToFav="true" :details="false" style="position:relative">
+        <section>
+          <h2>Random beer</h2>
+          <v-btn @click="getNew" class="white--text" depressed color="orange">Get new!</v-btn>
+          <!-- TODO -->
+          <router-link class="read-more" :to="{ name: 'about', params: {id: randomBeer.id, beer: randomBeer}}">read more</router-link>
+        </section>
+      </beerOverview>
+
   </div>
 </template>
 
@@ -47,5 +50,15 @@ export default {
   }
   section button {
     margin: 0;
+  }
+  .read-more {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    z-index: 5;
+    margin: 20px;
+    color: orange;
+    cursor: pointer;
+    text-transform: uppercase;
   }
 </style>

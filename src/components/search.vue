@@ -3,7 +3,7 @@
     <v-container>
       <v-layout row>
 
-        <v-flex xs9 sm10 md11>
+        <v-flex xs8 sm10 md11>
           <v-text-field
           class="mt-2 mb-0"
             v-model="search"
@@ -13,7 +13,7 @@
         </v-flex>
 
         <v-flex xs3 sm2 md1>
-          <v-btn @click="reset" style="margin-top: 16px;" depressed color="orange">Reset</v-btn>
+          <v-btn @click="reset" style="margin-top: 16px;" class="white--text" depressed color="orange">Reset</v-btn>
         </v-flex>
 
 
