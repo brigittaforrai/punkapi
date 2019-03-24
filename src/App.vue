@@ -8,7 +8,7 @@
 
 <script>
   import navigation from './components/navigation.vue'
-  import search from '@/components/search.vue'
+  import search from './components/search.vue'
   export default {
     name: 'App',
     components: { navigation, search },
