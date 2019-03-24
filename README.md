@@ -1,4 +1,4 @@
-# beers
+# punk api
 
 ## Project setup
 ```
