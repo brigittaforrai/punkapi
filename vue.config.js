@@ -1,11 +1,7 @@
-if (process.env.NODE_ENV === 'production') {
-  process.env.BASE_URL = '/punkapi/'
-} else {
-  process.env.BASE_URL = '/'
-}
+const production = process.env.NODE_ENV === "production"
 
 module.exports = {
   lintOnSave: true,
-  publicPath: process.env.BASE_URL,
+  publicPath: production ? '/punkapi' : '/' ,
   outputDir: 'docs'
 }

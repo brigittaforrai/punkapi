@@ -4,12 +4,13 @@ import Store from './store.js'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
 import List from './views/List.vue'
+import { publicPath } from './../vue.config.js'
 
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
+  base: publicPath,
   routes: [
     {
       path: '/',
