@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <h1 :style="this.route !== 'saved' ? 'margin:0': ''">{{title}}</h1>
-    <filters></filters>
+    <filters v-if="route !== 'saved'"></filters>
     <paginator v-if="route !== 'saved'"></paginator>
     <beerList :type="route"></beerList>
   </div>
