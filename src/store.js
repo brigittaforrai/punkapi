@@ -76,12 +76,14 @@ export default new Vuex.Store({
         commit('setBeers', beers)
       })
     },
-    getBeerById: ({state, commit}, id) => {
+    getBeerById: ({
+      commit
+    }, id) => {
       return punkApi.getBeerById(id).then((beer) => {
         commit('setBeer', beer[0])
       })
     },
-    getRandomBeer: ({state, commit}) => {
+    getRandomBeer: ({commit}) => {
       return punkApi.getRandomBeer().then((beer) => {
         commit('setRandomBeer', beer[0])
       })
@@ -104,11 +106,11 @@ export default new Vuex.Store({
   }
 })
 
-function replaceText (text) {
+function replaceText(text) {
   return text.replace(/[^a-zA-Z ]/g, "").trim().split(' ').join('').toLowerCase()
 }
 
-function flattenList (list) {
+function flattenList(list) {
   let newArr = []
   list.forEach((arr) => {
     newArr = newArr.concat(arr)

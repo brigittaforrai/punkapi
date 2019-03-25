@@ -1,36 +1,27 @@
-<template lang="html">
-        <v-container fill-height grid-list-lg text-xs-center>
-          <v-layout style="margin-bottom: 50px;" row wrap align-center>
-            <v-flex v-for="beer in beers" v-bind="{ [`xs${size}`]: true }">
-              <v-hover>
-                <v-card hover
-                        slot-scope="{hover}"
-                        :to="{ name: 'about', params: {id: beer.id, beer: beer}}"
-                        style="padding-top: 24px; height: 340px;">
-                  <v-expand-transition>
-                    <div v-if="hover"
-                         class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal white--text"
-                         style="">{{beer.description.length > 250 ? `${beer.description.substring(0,250)}...` : beer.description}}
-                    </div>
-                  </v-expand-transition>
-                  <v-img class="white--text"
-                         :lazy-src="placeholder"
-                         :src="beer.image_url || placeholder"
-                         contain
-                         height="200px">
+<template>
+<v-container fill-height grid-list-lg text-xs-center>
+  <v-layout style="margin-bottom: 50px;" row wrap align-center>
+    <v-flex :key="beer" v-for="beer in beers" v-bind="{ [`xs${size}`]: true }">
+      <v-hover>
+        <v-card hover slot-scope="{hover}" :to="{ name: 'about', params: {id: beer.id, beer: beer}}" style="padding-top: 24px; height: 340px;">
+          <v-expand-transition>
+            <div v-if="hover" class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal white--text" style="">{{beer.description.length > 250 ? `${beer.description.substring(0,250)}...` : beer.description}}
+            </div>
+          </v-expand-transition>
+          <v-img class="white--text" :lazy-src="placeholder" :src="beer.image_url || placeholder" contain height="200px">
 
-                  </v-img>
-                  <v-card-title primary-title center>
-                    <div style="width: 100%">
-                      <h3 class="text-truncate font-weight-medium headline">{{beer.name}}</h3>
-                      <div style="margin-top: 8px;">{{beer.tagline.length > 40 ? `${beer.tagline.substring(0,40)}...` : beer.tagline}}</div>
-                    </div>
-                  </v-card-title>
-                </v-card>
-              </v-hover>
-            </v-flex>
-          </v-layout>
-        </v-container>
+          </v-img>
+          <v-card-title primary-title center>
+            <div style="width: 100%">
+              <h3 class="text-truncate font-weight-medium headline">{{beer.name}}</h3>
+              <div style="margin-top: 8px;">{{beer.tagline.length > 40 ? `${beer.tagline.substring(0,40)}...` : beer.tagline}}</div>
+            </div>
+          </v-card-title>
+        </v-card>
+      </v-hover>
+    </v-flex>
+  </v-layout>
+</v-container>
 </template>
 
 <script>
@@ -45,16 +36,23 @@ export default {
     }
   },
   computed: {
-    size () {
+    size() {
       switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return '12'
-        case 'sm': return '4'
-        case 'md': return '4'
-        case 'lg': return '3'
-        case 'xl': return '2'
+        case 'xs':
+          return '12'
+        case 'sm':
+          return '4'
+        case 'md':
+          return '4'
+        case 'lg':
+          return '3'
+        case 'xl':
+          return '2'
+        default:
+          return '4'
       }
     },
-    beers () {
+    beers() {
       let array = []
 
       if (this.type === 'saved') {
@@ -71,13 +69,8 @@ export default {
       let to = from + perPage
       return array.slice(from, to)
     },
-    page () {
-      return this.$store.getters.getCurrentPage -1
-    }
-  },
-  methods: {
-    cropText(text) {
-      // todo
+    page() {
+      return this.$store.getters.getCurrentPage - 1
     }
   }
 }

@@ -3,20 +3,12 @@
   <v-layout column no-wrap justify-center>
     <v-flex>
       <v-range-slider :min="filters.abv.min" :max="filters.abv.max" v-model="filters.abv.val" :color="filters.abv.color" :label="filters.abv.label" :thumb-color="filters.abv.color" thumb-label></v-range-slider>
-      <v-range-slider :min="filters.ibu.min" :max="filters.ibu.max"v-model="filters.ibu.val" :color="filters.ibu.color" :label="filters.ibu.label" :thumb-color="filters.ibu.color" thumb-label></v-range-slider>
+      <v-range-slider :min="filters.ibu.min" :max="filters.ibu.max" v-model="filters.ibu.val" :color="filters.ibu.color" :label="filters.ibu.label" :thumb-color="filters.ibu.color" thumb-label></v-range-slider>
       <v-range-slider :min="filters.ebc.min" :max="filters.ebc.max" v-model="filters.ebc.val" :color="filters.ebc.color" :label="filters.ebc.label" :thumb-color="filters.ebc.color" thumb-label></v-range-slider>
     </v-flex>
   </v-layout>
-  <v-btn @click="filter('ibu')"
-         style="margin: 15px 10px 0 0;"
-         depressed
-         color="orange"
-         class="white--text">filter</v-btn>
- <v-btn @click="reset"
-        style="margin: 15px 0 0 10px;"
-        depressed
-        color="rgb(150, 150, 150)"
-        class="white--text">reset</v-btn>
+  <v-btn @click="filter('ibu')" style="margin: 15px 10px 0 0;" depressed color="orange" class="white--text">filter</v-btn>
+  <v-btn @click="reset" style="margin: 15px 0 0 10px;" depressed color="rgb(150, 150, 150)" class="white--text">reset</v-btn>
 </v-container>
 </template>
 
@@ -50,16 +42,16 @@ export default {
     }
   },
   methods: {
-      filter() {
-        Object.keys(this.filters).forEach((name) => {
-          this.$store.commit('setFilter', {
-            type:name,
-            value:this.filters[name].val
-          })
+    filter() {
+      Object.keys(this.filters).forEach((name) => {
+        this.$store.commit('setFilter', {
+          type: name,
+          value: this.filters[name].val
         })
+      })
 
-        this.$store.dispatch('filter')
-      },
+      this.$store.dispatch('filter')
+    },
     reset() {
       Object.keys(this.filters).forEach((name) => {
         let filter = this.filters[name]
@@ -70,7 +62,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

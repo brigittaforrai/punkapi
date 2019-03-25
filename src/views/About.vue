@@ -1,7 +1,7 @@
 <template>
-  <div class="about">
-    <beerOverview :addToFav="true" :details="true" :beer="beer"></beerOverview>
-  </div>
+<div class="about">
+  <beerOverview :addToFav="true" :details="true" :beer="beer"></beerOverview>
+</div>
 </template>
 
 <script>
@@ -9,9 +9,11 @@ import beerOverview from './../components/beerOverview.vue'
 
 export default {
   name: 'About',
-  components: {beerOverview},
+  components: {
+    beerOverview
+  },
   computed: {
-    beer () {
+    beer() {
       return this.$store.getters.getBeer
     },
   }
@@ -23,5 +25,4 @@ export default {
   min-height: 100vh;
   padding: 20px;
 }
-
 </style>

@@ -1,15 +1,14 @@
 <template>
-  <div class="list">
-    <h1 :style="this.route !== 'saved' ? 'margin:0': ''">{{title}}</h1>
-    <filters v-if="route !== 'saved'"></filters>
-    <paginator v-if="route !== 'saved'"></paginator>
-    <beerList :type="route"></beerList>
-  </div>
+<div class="list">
+  <h1 :style="this.route !== 'saved' ? 'margin:0': ''">{{title}}</h1>
+  <filters v-if="route !== 'saved'"></filters>
+  <paginator v-if="route !== 'saved'"></paginator>
+  <beerList :type="route"></beerList>
+</div>
 </template>
 
 <script>
 import beerList from '@/components/beerList.vue'
-import search from '@/components/search.vue'
 import paginator from '@/components/paginator.vue'
 import filters from '@/components/filters.vue'
 
@@ -17,7 +16,6 @@ export default {
   name: 'List',
   components: {
     beerList,
-    search,
     paginator,
     filters
   },
@@ -32,8 +30,8 @@ export default {
 }
 </script>
 <style scoped>
-  h1 {
-    text-align: center;
-    margin: 50px auto;
-  }
+h1 {
+  text-align: center;
+  margin: 50px auto;
+}
 </style>
