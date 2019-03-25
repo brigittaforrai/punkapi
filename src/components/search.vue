@@ -13,10 +13,12 @@
         </v-flex>
 
         <v-flex xs3 sm2 md1>
-          <v-btn @click="reset" style="margin-top: 16px;" class="white--text" depressed color="orange">Reset</v-btn>
+          <v-btn @click="reset"
+                 style="margin-top: 16px;"
+                 class="white--text"
+                 depressed
+                 color="rgb(150, 150, 150)">Reset</v-btn>
         </v-flex>
-
-
       </v-layout>
     </v-container>
   </v-form>
@@ -31,7 +33,7 @@ export default {
   },
   methods: {
     change () {
-      this.$store.commit('setFilter', {type:'search', value:this.search})
+      this.$store.commit('setSearch', this.search)
       this.$store.dispatch('searchName')
 
       if(this.$route.name === 'home') {

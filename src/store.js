@@ -14,8 +14,11 @@ export default new Vuex.Store({
     itemNum: 325, // punk api does not return any info about how many items are there in the db
     currentPage: 1,
     perPage: 48,
+    search: null,
     filters: {
-      search: null
+      abv: null,
+      ibu: null,
+      ebc: null
     }
   },
   getters: {
@@ -58,6 +61,9 @@ export default new Vuex.Store({
     setFilter: (state, {type, value}) => {
       state.filters[type] = value
     },
+    setSearch: (state, val) => {
+      state.search = val
+    },
     resetFilters: (state) => {
       state.filteredBeers = state.beers
     }
@@ -81,11 +87,19 @@ export default new Vuex.Store({
       })
     },
     searchName: (context) => {
-      let search = context.state.filters.search
+      let search = context.state.search
       let filtered = context.state.beers.filter((beer) => {
         return replaceText(beer.name).includes(replaceText(search))
       })
       context.state.filteredBeers = filtered
+      context.state.currentPage = 1
+    },
+    filter: (context) => {
+      let filters = context.state.filters
+      punkApi.filterBeers(filters).then((res) => {
+        context.state.filteredBeers = res
+      })
+      context.state.currentPage = 1
     }
   }
 })
@@ -100,8 +114,4 @@ function flattenList (list) {
     newArr = newArr.concat(arr)
   })
   return newArr
-}
-
-function filter () {
-
 }

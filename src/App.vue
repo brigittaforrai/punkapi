@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     <navigation></navigation>
     <search></search>
     <router-view/>
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -19,8 +19,14 @@
 </script>
 
 <style>
-  body {
-    font-family: Helvetica;
+  html {
+    height: 100%;
+  }
+   body, #app {
+     height: auto;
+   }
+  .application--wrap {
+    height: 100%;
   }
   a:-webkit-any-link {
     text-decoration: none;

@@ -20,21 +20,20 @@ export default {
     }
     return Promise.all(promises)
   },
-  // getBeers: () => {
-  //   let query = '?'
-  //   const filters = Store.getters.getFilters
-  //   Object.keys(filters).forEach((filter) => {
-  //     if (filters[filter]) {
-  //       query += a[filter] + '=' + filters[filter] + '&'
-  //     }
-  //   })
-  //
-  //   return axios.get(`${PUNK}/beers${query}`).then((res) => {
-  //     return res.data
-  //   }).catch((e) => {
-  //     Store.commit('newError', e.message)
-  //   })
-  // },
+  filterBeers: (filters) => {
+    let query = '?'
+    Object.keys(filters).forEach((name) => {
+      if (filters[name] && name !== 'search') {
+        query += `${name}_gt=${filters[name][0]}&${name}_lt=${filters[name][1]}&`
+      }
+    })
+
+    return axios.get(`${PUNK}/beers${query}`).then((res) => {
+      return res.data
+    }).catch((e) => {
+      Store.commit('newError', e.message)
+    })
+  },
   getBeerById: (id) => {
     return axios.get(`${PUNK}/beers/${id}`).then((res) => {
       return res.data

@@ -9,11 +9,11 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <router-link class="link" to="/"><v-btn flat>Home</v-btn></router-link>
-        <router-link class="link" to="/beers"><v-btn flat>Beers</v-btn></router-link>
-        <router-link class="link" to="/saved"><v-btn flat>Saved</v-btn></router-link>
+        <router-link class="link" to="/"><v-btn class="white--text" flat>Home</v-btn></router-link>
+        <router-link class="link" to="/beers"><v-btn class="white--text" flat>Beers</v-btn></router-link>
+        <router-link class="link" to="/saved"><v-btn class="white--text" flat>Saved</v-btn></router-link>
       </v-toolbar-items>
-      
+
     </v-toolbar>
 </template>
 

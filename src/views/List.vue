@@ -1,6 +1,7 @@
 <template>
   <div class="list">
-    <h1>{{title}}</h1>
+    <h1 :style="this.route !== 'saved' ? 'margin:0': ''">{{title}}</h1>
+    <filters></filters>
     <paginator v-if="route !== 'saved'"></paginator>
     <beerList :type="route"></beerList>
   </div>
@@ -10,13 +11,15 @@
 import beerList from '@/components/beerList.vue'
 import search from '@/components/search.vue'
 import paginator from '@/components/paginator.vue'
+import filters from '@/components/filters.vue'
 
 export default {
   name: 'List',
   components: {
     beerList,
     search,
-    paginator
+    paginator,
+    filters
   },
   computed: {
     route() {

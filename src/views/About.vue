@@ -20,7 +20,6 @@ export default {
 
 <style scoped>
 .about {
-  background-color: rgba(230, 225, 220, 0.2);
   min-height: 100vh;
   padding: 20px;
 }
